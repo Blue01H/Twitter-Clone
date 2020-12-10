@@ -1,4 +1,5 @@
 {
+  "homepage": "http:///Blue01H.github.io/twitter-app",
   "name": "server",
   "version": "1.0.0",
   "description": "",
@@ -9,6 +10,9 @@
   },
   "scripts": {
     "start": "node index.js",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "build": "react-scripts build && mv build webapp",
     "heroku-postbuild": "cd client && npm install && npm run start"
   },
   "keywords": [],
