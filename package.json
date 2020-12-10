@@ -12,7 +12,6 @@
     "start": "node index.js",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "build": "mv build webapp",
     "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "keywords": [],
