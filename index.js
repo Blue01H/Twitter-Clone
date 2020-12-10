@@ -7,19 +7,16 @@ const path = require("path");
 app.use(express.json());
 app.use(cors());
 
-/*if(process.env.NODE_ENV === "production") {
+if(process.env.NODE_ENV === "production") {
     app.use(express.static(path.join(__dirname, "client/public")));
-}*/
+    app.get("*", (req, res) => {
+       res.sendFile(path.resolve(__dirname,  "build", "index.html"));
+     });
+}
 
- if (process.env.NODE_ENV === "production"{
-      app.use(express.static("build"));
-      app.get("*", (req, res) => {
-        res.sendFile(path.resolve(__dirname,  "build", "index.html"));
-      });
-    }
 
-//console.log(__dirname);
-//console.log(path.join(__dirname, "client/public"));
+console.log(__dirname);
+console.log(path.join(__dirname, "client/public"));
 
 app.use("/auth",require("./routes/jwtAuth"));
 app.use("/dashboard", require("./routes/dashboard"));
